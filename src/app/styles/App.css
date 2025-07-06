@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-main: #febc30;
+  --width-main: 85%;
+}
+
+/* Цвет обычных точек */
+.custom-pagination .swiper-pagination-bullet {
+  background-color: #fff; /* белые */
+  opacity: 0.5;
+}
+
+/* Цвет активной точки */
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: #facc15; /* жёлтая (tailwind yellow-400) */
+  opacity: 1;
+}
