@@ -9,6 +9,7 @@ import facebook from "@/shared/assets/icons/facebook.svg";
 import ContactsPanel from "@/widgets/contacts-panel/ui/ContactsPanel";
 
 const Contacts = () => {
+
   const isMobile = useMediaQuery("(max-width:1028px)");
   const mobile = useMediaQuery('(max-width:768px')
 

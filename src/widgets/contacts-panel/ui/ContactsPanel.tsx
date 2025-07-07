@@ -9,6 +9,10 @@ const ContactsPanel = () => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get("product");
+  console.log(productName);
+
 
   const [searchParams] = useSearchParams();
   const productName = searchParams.get("product");
@@ -66,7 +70,8 @@ const ContactsPanel = () => {
             maxLength={1000}
             className="max-h-[300px] min-h-[200px] bg-white w-full rounded-[10px] text-black p-3 placeholder:text-gray-500"
             onChange={(e) => setComment(e.target.value)}
-          ></textarea>
+          >
+          </textarea>
           <span>{comment.length}/1000</span>
         </div>
         <button

@@ -13,12 +13,18 @@ const Main = () => {
     <div className="w-full flex flex-col justify-center">
       <div
         style={{ backgroundImage: `url(${banner})` }}
-        className={`w-full h-[100vh] ${
+        className={`w-full h-[80vh] ${
           mobile && "h-[190vh]"
         } bg-cover bg-center flex justify-center`}
       >
-        <div className="w-main flex flex-col items-center gap-y-16 text-white py-10">
-          <MainHeader mobile={mobile} />
+        <div className="w-main flex flex-col justify-center items-center gap-y-16 text-white py-10">
+          <div
+            className={`${
+              !mobile && "absolute top-4 left-1/2 -translate-x-1/2"
+            }`}
+          >
+            <MainHeader mobile={mobile} />
+          </div>
 
           <div
             className={`flex ${

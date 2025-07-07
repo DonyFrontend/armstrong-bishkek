@@ -19,6 +19,7 @@ import {
   useFeedbacksStore,
 } from "@/app/store/feedbacks/feedbacksStore";
 import Feedback from "@/shared/ui/feedback/Feedback";
+import { api } from "@/shared/api/instance";
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -147,7 +148,7 @@ const Banners = () => {
             >
               <div className="relative group w-full h-[424px] rounded-2xl overflow-hidden cursor-pointer">
                 <img
-                  src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                  src={`${api}${item.images[0]}`}
                   alt={`catalog-${item.id}`}
                   className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                 />
@@ -159,7 +160,7 @@ const Banners = () => {
                     <p className="text-lg font-semibold mb-4">
                       {item.price_retail} руб
                     </p>
-                    <button className="bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
+                    <button className="bg-[#FEBC30] w-[200px] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
                       Купить
                     </button>
                   </div>

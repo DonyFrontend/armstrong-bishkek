@@ -10,7 +10,6 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from "swiper/modules";
 import { api } from "@/shared/api/instance";
 
-
 const ProductDetail = () => {
 
     const isMobile = useMediaQuery("(max-width: 729px)");
@@ -47,9 +46,9 @@ const ProductDetail = () => {
                             modules={[Navigation, Pagination]}
                             spaceBetween={10}
                             slidesPerView={isMobile ? 1 : 1}
-                            navigation={false}
+                            navigation
                             pagination={{ clickable: true }}
-                            className={`mySwiper ${isMobile ? "w-full" : "w-[48%] h-[400px]"} `}
+                            className={`mySwiper ${isMobile ? "w-full" : "w-[48%] h-[350px]"} `}
                         >
                             {product?.images?.map((img, index) => (
                                 <SwiperSlide key={index}>
@@ -154,7 +153,7 @@ const ProductDetail = () => {
                                                 <p className="text-lg font-semibold">Цена розничная:</p>
                                                 <p className="text-lg font-semibold mb-4">{item.price_retail} руб</p>
 
-                                                <button className="bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
+                                                <button className="bg-[#FEBC30] cursor-pointer transition text-black text-sm px-7 py-3">
                                                     Купить
                                                 </button>
                                             </div>
