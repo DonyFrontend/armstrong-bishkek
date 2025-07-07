@@ -1,8 +1,10 @@
 import MainHeader from "@/widgets/main-header/ui/MainHeader"
 import { Search } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import arrowDown from '@/shared/assets/icons/arrow_down.png'
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery"
+import { useCatalogsStore } from "@/app/store/feedbacks/feedbacksStore"
+import { Link } from "react-router-dom"
 
 const Catalog = () => {
 
@@ -10,13 +12,35 @@ const Catalog = () => {
     const [openCeiling, setOpenCeiling] = useState(false);
     const [openCompound, setOpenCompound] = useState(false);
     const [openMaterials, setOpenMaterials] = useState(false);
-    const isMobile = useMediaQuery('(max-width: 729px)')
+    const isMobile = useMediaQuery('(max-width: 729px)');
+    const [loading, setLoading] = useState(false);
+    const { catalogs, getCatalogs } = useCatalogsStore();
+
+    useEffect(() => {
+        getCatalogs(setLoading);
+    }, [getCatalogs]);
+
+    useEffect(() => {
+        if (loading) {
+            console.log('loading');
+        }
+    }, [loading])
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
+
+    const totalPages = Math.ceil(catalogs.length / itemsPerPage);
+
+    const paginatedCatalogs = catalogs.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
 
     return (
         <>
             <div className="bg-black w-full h-full flex justify-center pt-8">
 
-                <div className={`${isMobile ? "w-full" : "w-catalog"}`}>
+                <div className={`${isMobile ? "w-full" : "w-main"}`}>
 
                     <MainHeader mobile={isMobile}/>
 
@@ -138,8 +162,65 @@ const Catalog = () => {
                         <p className="text-2xl text-white"> Главная/ <span className="text-[#febc30]"> Каталог </span> </p>
                     </div>
 
-                    <div className="w-full p-5 mt-2 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                        <div className="border w-[50px] h-[50px]"></div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-4">
+                        {paginatedCatalogs.map((item) => (
+                            <Link key={item.id} className="cursor-pointer" to={`/product/${item.id}`}>
+                                <div className="relative group w-full h-[424px] rounded-2xl overflow-hidden cursor-pointer">
+                                    <img
+                                        src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                                        alt={`catalog-${item.id}`}
+                                        className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
+                                    />
+
+                                    <div className="absolute inset-0 flex flex-col justify-center items-start opacity-0 group-hover:opacity-100 transition duration-300 text-white bg-black/40 backdrop-blur-sm p-6 rounded-2xl">
+                                        <div className="flex flex-col">
+                                            <h3 className="text-xl font-semibold mb-6">{item.title}</h3>
+                                            <p className="text-sm mb-3">{item.description}</p>
+                                            <p className="text-lg font-semibold">Цена розничная:</p>
+                                            <p className="text-lg font-semibold mb-4">{item.price_retail} руб</p>
+
+                                            <button className="bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
+                                                Купить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Пагинация */}
+                    <div className="flex justify-center items-center gap-4 mb-12">
+                        <button
+                            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                            className="text-white border border-white px-4 py-2 rounded disabled:opacity-30"
+                        >
+                            Назад
+                        </button>
+
+                        {[...Array(totalPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentPage(index + 1)}
+                                className={`px-4 py-2 rounded border ${currentPage === index + 1
+                                        ? "bg-yellow-400 text-black font-semibold"
+                                        : "text-white border-white"
+                                    }`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+
+                        <button
+                            onClick={() =>
+                                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                            }
+                            disabled={currentPage === totalPages}
+                            className="text-white border border-white px-4 py-2 rounded disabled:opacity-30"
+                        >
+                            Вперёд
+                        </button>
                     </div>
 
                 </div>
