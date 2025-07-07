@@ -14,7 +14,7 @@ const Main = () => {
       <div
         style={{ backgroundImage: `url(${banner})` }}
         className={`w-full h-[100vh] ${
-          mobile && "h-[170vh]"
+          mobile && "h-[190vh]"
         } bg-cover bg-center flex justify-center`}
       >
         <div className="w-main flex flex-col items-center gap-y-16 text-white py-10">

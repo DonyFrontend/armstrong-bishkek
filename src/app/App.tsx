@@ -13,13 +13,6 @@ function App() {
     <>
       <BrowserRouter>
         <ErrorBoundary>
-          <main>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/catalog" element={<Catalog />} />
-              <Route path="/contacts" element={<Contacts />} />
-            </Routes>
-          </main>
 
           <main>
             <Routes>
