@@ -46,7 +46,7 @@ const ProductDetail = () => {
                             modules={[Navigation, Pagination]}
                             spaceBetween={10}
                             slidesPerView={isMobile ? 1 : 1}
-                            navigation={false}
+                            navigation
                             pagination={{ clickable: true }}
                             className={`mySwiper ${isMobile ? "w-full" : "w-[48%] h-[400px]"} `}
                         >
