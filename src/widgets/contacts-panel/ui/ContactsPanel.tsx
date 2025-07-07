@@ -55,6 +55,7 @@ const ContactsPanel = () => {
         </div>
         <div className="w-full flex flex-col gap-y-1">
           <textarea
+            value={comment}
             name=""
             id=""
             placeholder="Введите комментарий"
@@ -67,15 +68,16 @@ const ContactsPanel = () => {
         <button
           type="submit"
           disabled={loading == true}
-          className="p-2 rounded-[10px] text-[20px] text-white bg-main"
+          className={`p-2 rounded-[10px] cursor-pointer flex justify-center items-center px-4 text-[20px] text-white ${
+            loading ? "bg-yellow-700" : "bg-main"
+          }`}
         >
-          {loading ? (
-            <div className="w-[10px] h-[10px] animate-spin bg-white"></div>
-          ) : (
-            "Отправить"
-          )}
+          {loading && (
+            <div className="w-[20px] rounded-full bg-none h-[20px] justify-self-center animate-spin border-t botder-b border-t-white border-b-white"></div>
+          )}{" "}
+          <p className={`${loading && "invisible"}`}>Отправить</p>
         </button>
-        {status && <p className="text-[18px] text-white">{status}</p>}
+        {status && <p className="text-[18px] text-green-500">{status}</p>}
       </form>
     </div>
   );
