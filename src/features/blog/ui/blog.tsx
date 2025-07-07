@@ -8,6 +8,7 @@ const Blog = () => {
     const isMobile = useMediaQuery("(max-width: 729px)");
     const { blogs, getBlogs } = useBlogsStore();
     const [, setLoading] = useState(false);
+    const mobile = useMediaQuery("(max-width:1023px)");
 
     // Пагинация
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,9 +27,9 @@ const Blog = () => {
 
     return (
         <>
-            <div className="bg-black w-full h-full flex justify-center pt-8">
+            <div className="bg-black w-full h-full flex justify-center pt-8 pb-10">
                 <div className={`${isMobile ? "w-full" : "w-main"}`}>
-                    <MainHeader mobile />
+                    <MainHeader mobile={mobile} />
 
                     <div
                         className={`w-full mt-8 p-5 ${isMobile ? "items-center justify-center flex" : "items-start"
@@ -45,7 +46,7 @@ const Blog = () => {
                             <Link key={item.id} className="cursor-pointer" to={`/blog/${item.id}`}>
                                 <div className={`relative group w-full h-[424px] overflow-hidden cursor-pointer rounded-[12px] ${isMobile ? "flex justify-center" : ""}`}>
                                     <img
-                                        src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                                        src={`https://polite-mice-make.loca.lt${item.images[0]}`}
                                         alt={`catalog-${item.id}`}
                                         className={`object-cover transition duration-300 group-hover:blur-xs ${isMobile ? "w-[85%]" : "w-full"} h-full `}
                                     />

@@ -12,7 +12,7 @@ const Contacts = () => {
   const mobile = useMediaQuery("(max-width:768px)");
 
   return (
-    <div className="bg-black text-white relative w-full h-full flex justify-center">
+    <div className="bg-black text-white relative w-full h-full flex justify-center pb-10">
       <div className="w-main pt-8">
         <div
           className={`${!mobile && "absolute top-4 left-1/2 -translate-x-1/2"}`}
@@ -20,9 +20,8 @@ const Contacts = () => {
           <MainHeader mobile={mobile} />
         </div>
         <div
-          className={`mt-[170px] ${
-            mobile ? "flex-col" : "flex"
-          } w-full gap-x-5 justify-between`}
+          className={`mt-[170px] ${mobile ? "flex-col" : "flex"
+            } w-full gap-x-5 justify-between`}
         >
           {mobile && (
             <div className="w-full">
@@ -30,9 +29,8 @@ const Contacts = () => {
             </div>
           )}
           <div
-            className={`${
-              mobile ? "w-full" : "w-1/2"
-            } flex flex-col gap-y-10 justify-center`}
+            className={`${mobile ? "w-full" : "w-1/2"
+              } flex flex-col gap-y-10 justify-center`}
           >
             <div className="h-[300px] bg-[linear-gradient(180deg,_#febc30,_#d4bd8d)] w-full rounded-[10px] flex justify-center items-center">
               <p className="text-center font-bold text-[40px]">

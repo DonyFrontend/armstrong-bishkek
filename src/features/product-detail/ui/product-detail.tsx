@@ -17,6 +17,7 @@ const ProductDetail = () => {
     const { catalogs, getCatalogs } = useCatalogsStore();
     const { id } = useParams()
     const product = catalogs.find(item => String(item.id) === id);
+    const mobile = useMediaQuery("(max-width:1023px)");
 
     useEffect(() => {
         getCatalogs(setLoading);
@@ -29,10 +30,10 @@ const ProductDetail = () => {
     }, [loading])
 
     return (
-        <div className="bg-black w-full flex justify-center pt-8 text-white">
+        <div className="bg-black w-full flex justify-center pt-8 text-white pb-10">
             <div className={`${isMobile ? "w-full px-4" : "w-main"}`}>
 
-                <MainHeader mobile={isMobile} />
+                <MainHeader mobile={mobile} />
 
                 <div className="w-[80%] mx-auto mb-8 mt-10">
                     <p className="text-white text-2xl mb-4">Главная </p>
@@ -51,7 +52,7 @@ const ProductDetail = () => {
                             {product?.images?.map((img, index) => (
                                 <SwiperSlide key={index}>
                                     <img
-                                        src={`https://wide-clocks-enjoy.loca.lt${img}`}
+                                        src={`https://cruel-places-roll.loca.lt${img}`}
                                         alt={`product ${index + 1}`}
                                         className="rounded-lg object-cover"
                                     />
@@ -129,7 +130,7 @@ const ProductDetail = () => {
                                         className={`relative group rounded-2xl overflow-hidden cursor-pointer ${isMobile ? "w-[200px] h-[200px]" : "w-[424px] h-[424px]"} `}
                                     >
                                         <img
-                                            src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                                            src={`https://polite-mice-make.loca.lt${item.images[0]}`}
                                             alt={`catalog-${item.id}`}
                                             className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                                         />

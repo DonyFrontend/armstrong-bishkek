@@ -15,6 +15,7 @@ const Catalog = () => {
     const isMobile = useMediaQuery('(max-width: 729px)');
     const [loading, setLoading] = useState(false);
     const { catalogs, getCatalogs } = useCatalogsStore();
+    const mobile = useMediaQuery("(max-width:1023px)");
 
     useEffect(() => {
         getCatalogs(setLoading);
@@ -38,11 +39,11 @@ const Catalog = () => {
 
     return (
         <>
-            <div className="bg-black w-full h-full flex justify-center pt-8">
+            <div className="bg-black w-full h-full flex justify-center pt-8 pb-10">
 
                 <div className={`${isMobile ? "w-full" : "w-main"}`}>
 
-                    <MainHeader mobile={isMobile}/>
+                    <MainHeader mobile={mobile} />
 
                     <div className="flex flex-col p-4 items-center mt-8">
                         <div className="relative w-full">
@@ -74,10 +75,10 @@ const Catalog = () => {
     `}
                             >
                                 <div className="ml-2 flex flex-col gap-2 p-2">
-                                    <p className="cursor-pointer">Лампы</p>
-                                    <p className="cursor-pointer">Светильники</p>
-                                    <p className="cursor-pointer">Аксессуары</p>
-                                    <p className="cursor-pointer">Оборудование</p>
+                                    <Link to={'/subcategory=Лампы'}><p className="cursor-pointer">Лампы</p></Link>
+                                    <Link to={'/subcategory=Светильники'}><p className="cursor-pointer">Светильники</p></Link>
+                                    <Link to={'/subcategory=Аксессуары'}><p className="cursor-pointer">Аксессуары</p></Link>
+                                    <Link to={'/subcategory=Оборудование'}><p className="cursor-pointer">Оборудование</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -99,9 +100,9 @@ const Catalog = () => {
   `}
                             >
                                 <div className="ml-2 flex flex-col gap-2 p-2">
-                                    <p className="cursor-pointer">Реечные подвесные потолки</p>
-                                    <p className="cursor-pointer">Решетчатые потолки "ГРИЛЬЯТО"</p>
-                                    <p className="cursor-pointer">Подвесные потолки Армстронг</p>
+                                    <Link to={'/subcategory=Реечные подвесные потолки'}><p className="cursor-pointer">Реечные подвесные потолки</p></Link>
+                                    <Link to={'/subcategory=Решетчатые потолки "ГРИЛЬЯТО'}><p className="cursor-pointer">Решетчатые потолки "ГРИЛЬЯТО"</p></Link>
+                                    <Link to={'/subcategory=Подвесные потолки Армстронг'}><p className="cursor-pointer">Подвесные потолки Армстронг</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -123,10 +124,10 @@ const Catalog = () => {
   `}
                             >
                                 <div className="ml-2 flex flex-col gap-2 p-2">
-                                    <p className="cursor-pointer">Дерево</p>
-                                    <p className="cursor-pointer">Пластик</p>
-                                    <p className="cursor-pointer">Гипсокартон</p>
-                                    <p className="cursor-pointer">Фарфор</p>
+                                    <Link to={'/subcategory=Дерево'}><p className="cursor-pointer">Дерево</p></Link>
+                                    <Link to={'/subcategory=Пластик'}><p className="cursor-pointer">Пластик</p></Link>
+                                    <Link to={'/subcategory=Гипсокартон'}><p className="cursor-pointer">Гипсокартон</p></Link>
+                                    <Link to={'/subcategory=Фарфор'}><p className="cursor-pointer">Фарфор</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -148,10 +149,10 @@ const Catalog = () => {
   `}
                             >
                                 <div className="ml-2 flex flex-col gap-2 p-2">
-                                    <p className="cursor-pointer">Европа</p>
-                                    <p className="cursor-pointer">Восток</p>
-                                    <p className="cursor-pointer">Китай</p>
-                                    <p className="cursor-pointer">СНГ</p>
+                                    <Link to={'/subcategory=Европа'}><p className="cursor-pointer">Европа</p></Link>
+                                    <Link to={'/subcategory=Восток'}><p className="cursor-pointer">Восток</p></Link>
+                                    <Link to={'/subcategory=Китай'}><p className="cursor-pointer">Китай</p></Link>
+                                    <Link to={'/subcategory=СНГ'}><p className="cursor-pointer">СНГ</p></Link>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +168,7 @@ const Catalog = () => {
                             <Link key={item.id} className="cursor-pointer" to={`/product/${item.id}`}>
                                 <div className="relative group w-full h-[424px] rounded-2xl overflow-hidden cursor-pointer">
                                     <img
-                                        src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                                        src={`https://polite-mice-make.loca.lt${item.images[0]}`}
                                         alt={`catalog-${item.id}`}
                                         className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                                     />
@@ -204,8 +205,8 @@ const Catalog = () => {
                                 key={index}
                                 onClick={() => setCurrentPage(index + 1)}
                                 className={`px-4 py-2 rounded border ${currentPage === index + 1
-                                        ? "bg-yellow-400 text-black font-semibold"
-                                        : "text-white border-white"
+                                    ? "bg-yellow-400 text-black font-semibold"
+                                    : "text-white border-white"
                                     }`}
                             >
                                 {index + 1}
