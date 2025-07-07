@@ -48,7 +48,7 @@ const ProductDetail = () => {
                             slidesPerView={isMobile ? 1 : 1}
                             navigation
                             pagination={{ clickable: true }}
-                            className={`mySwiper ${isMobile ? "w-full" : "w-[48%] h-[400px]"} `}
+                            className={`mySwiper ${isMobile ? "w-full" : "w-[48%] h-[350px]"} `}
                         >
                             {product?.images?.map((img, index) => (
                                 <SwiperSlide key={index}>
