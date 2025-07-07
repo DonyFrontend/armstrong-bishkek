@@ -5,6 +5,7 @@ import arrowDown from '@/shared/assets/icons/arrow_down.png'
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery"
 import { useCatalogsStore } from "@/app/store/feedbacks/feedbacksStore"
 import { Link } from "react-router-dom"
+import { api } from "@/shared/api/instance"
 
 const Catalog = () => {
 
@@ -168,7 +169,7 @@ const Catalog = () => {
                             <Link key={item.id} className="cursor-pointer" to={`/product/${item.id}`}>
                                 <div className="relative group w-full h-[424px] rounded-2xl overflow-hidden cursor-pointer">
                                     <img
-                                        src={`https://polite-mice-make.loca.lt${item.images[0]}`}
+                                        src={`${api}${item.images[0]}`}
                                         alt={`catalog-${item.id}`}
                                         className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                                     />

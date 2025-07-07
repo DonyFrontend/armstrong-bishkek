@@ -1,4 +1,5 @@
 import { useBlogsStore } from "@/app/store/feedbacks/feedbacksStore";
+import { api } from "@/shared/api/instance";
 import { useMediaQuery } from "@/shared/hooks/useMedia";
 import MainHeader from "@/widgets/main-header/ui/MainHeader";
 import { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ const BlogDetail = () => {
                 <div className={`flex ${isMobile ? "flex-col" : "flex-row"} gap-6 mb-10`}>
                     <div className="w-full md:w-1/2">
                         <img
-                            src={`https://polite-mice-make.loca.lt${blog.images[0]}`}
+                            src={`${api}${blog.images[0]}`}
                             alt="main-1"
                             className="rounded-xl w-full h-auto object-cover"
                         />
@@ -50,7 +51,7 @@ const BlogDetail = () => {
                 <div className={`flex ${isMobile ? "flex-col" : "flex-row-reverse"} gap-6`}>
                     <div className="w-full md:w-1/2">
                         <img
-                            src={`https://polite-mice-make.loca.lt${blog.images[1]}`}
+                            src={`${api}${blog.images[1]}`}
                             alt="main-2"
                             className="rounded-xl w-full h-auto object-cover"
                         />

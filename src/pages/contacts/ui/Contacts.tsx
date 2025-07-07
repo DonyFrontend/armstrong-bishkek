@@ -9,16 +9,17 @@ import facebook from "@/shared/assets/icons/facebook.svg";
 import ContactsPanel from "@/widgets/contacts-panel/ui/ContactsPanel";
 
 const Contacts = () => {
-  const mobile = useMediaQuery("(max-width:768px)");
+  const isMobile = useMediaQuery("(max-width:1028px)");
+  const mobile = useMediaQuery('(max-width:768px')
 
   return (
     <div className="bg-black text-white relative w-full h-full flex justify-center pb-10">
       <div className="w-main pt-8">
-        <div
+        {/* <div
           className={`${!mobile && "absolute top-4 left-1/2 -translate-x-1/2"}`}
-        >
-          <MainHeader mobile={mobile} />
-        </div>
+        > */}
+          <MainHeader mobile={isMobile} />
+        {/* </div> */}
         <div
           className={`mt-[170px] ${mobile ? "flex-col" : "flex"
             } w-full gap-x-5 justify-between`}

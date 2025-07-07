@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from "swiper/modules";
+import { api } from "@/shared/api/instance";
 
 
 const ProductDetail = () => {
@@ -52,7 +53,7 @@ const ProductDetail = () => {
                             {product?.images?.map((img, index) => (
                                 <SwiperSlide key={index}>
                                     <img
-                                        src={`https://cruel-places-roll.loca.lt${img}`}
+                                        src={`${api}${img}`}
                                         alt={`product ${index + 1}`}
                                         className="rounded-lg object-cover"
                                     />
@@ -130,7 +131,7 @@ const ProductDetail = () => {
                                         className={`relative group rounded-2xl overflow-hidden cursor-pointer ${isMobile ? "w-[200px] h-[200px]" : "w-[424px] h-[424px]"} `}
                                     >
                                         <img
-                                            src={`https://polite-mice-make.loca.lt${item.images[0]}`}
+                                            src={`${api}${item.images[0]}`}
                                             alt={`catalog-${item.id}`}
                                             className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                                         />
