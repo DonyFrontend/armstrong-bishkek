@@ -2,7 +2,7 @@ import MainHeader from "@/widgets/main-header/ui/MainHeader";
 import { useEffect, useState } from "react"
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery"
 import { useCatalogsStore } from "@/app/store/feedbacks/feedbacksStore"
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,6 +19,7 @@ const ProductDetail = () => {
     const { id } = useParams()
     const product = catalogs.find(item => String(item.id) === id);
     const mobile = useMediaQuery("(max-width:1023px)");
+    const navigate = useNavigate();
 
     useEffect(() => {
         getCatalogs(setLoading);
@@ -94,9 +95,19 @@ const ProductDetail = () => {
                             </div>
 
                             <div className="mt-6">
-                                <button className="w-full bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 text-black text-2xl font-semibold py-3 rounded-xl">
+                                <button
+                                    onClick={() => {
+                                        if (product?.title) {
+                                            navigate(`/contact?product=${encodeURIComponent(product.title)}`);
+                                        } else {
+                                            navigate("/contact");
+                                        }
+                                    }}
+                                    className="w-full bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 text-black text-2xl font-semibold py-3 rounded-xl"
+                                >
                                     Купить
                                 </button>
+
                             </div>
 
                             {/* Цвета и валюта */}
