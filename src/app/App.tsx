@@ -7,20 +7,22 @@ import { Catalog } from "@/features/catalog";
 import Contacts from "@/pages/contacts/ui/Contacts";
 import { ProductDetail } from "@/features/product-detail";
 import { Blog } from "@/features/blog";
+import { BlogDetail } from "@/features/blog-detail";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <ErrorBoundary>
-
           <main>
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/catalog" element={<Catalog />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="blog" element={<Blog />} />
-              <Route path="/contacts" element={<Contacts/>}/>
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/contact" element={<Contacts />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="*" element={<Catalog />} />
             </Routes>
           </main>
           <Footer />

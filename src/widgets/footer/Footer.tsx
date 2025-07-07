@@ -2,7 +2,7 @@ import logo from "@/shared/assets/icons/logo.svg";
 
 const Footer = () => {
   return (
-    <footer className="flex w-full justify-center bg-black border-t-2 border-t-white py-5">
+    <footer className="flex w-full justify-center bg-black border-t-5 border-t-white py-5">
       <div className="w-main flex flex-col lg:flex-row gap-x-4">
         <div className="flex flex-col gap-y-12 w-full lg:w-auto">
           <img src={logo} alt="" className="w-[174px] mx-auto lg:mx-0" />
