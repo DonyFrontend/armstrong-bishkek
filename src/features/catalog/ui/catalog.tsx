@@ -18,7 +18,7 @@ const Catalog = () => {
 
                 <div className={`${isMobile ? "w-full" : "w-catalog"}`}>
 
-                    <MainHeader />
+                    <MainHeader mobile={isMobile}/>
 
                     <div className="flex flex-col p-4 items-center mt-8">
                         <div className="relative w-full">

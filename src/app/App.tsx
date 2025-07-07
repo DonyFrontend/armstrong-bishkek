@@ -13,16 +13,10 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/catalog" element={<Catalog />} />
             </Routes>
           </main>
           <Footer />
-            <main>
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/catalog" element={<Catalog />} />
-              </Routes>
-            </main>
-          <footer></footer>
         </ErrorBoundary>
       </BrowserRouter>
     </>
