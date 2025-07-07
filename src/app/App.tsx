@@ -3,6 +3,7 @@ import "./styles/App.css";
 import ErrorBoundary from "./providers/error/ErrorBoundary";
 import Main from "@/pages/main/ui/Main";
 import Footer from "@/widgets/footer/Footer";
+import { Catalog } from "@/features/catalog";
 
 function App() {
   return (
@@ -15,6 +16,13 @@ function App() {
             </Routes>
           </main>
           <Footer />
+            <main>
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/catalog" element={<Catalog />} />
+              </Routes>
+            </main>
+          <footer></footer>
         </ErrorBoundary>
       </BrowserRouter>
     </>

@@ -12,6 +12,7 @@ const MainHeader = ({ mobile }: { mobile: boolean }) => {
         mobile && "gap-x-5"
       } bg-[#00000040] backdrop-blur-[6px] rounded-[70px]`}
     >
+    <header className="w-full flex justify-between items-center p-4 px-10 bg-[rgba(255,255,255,0.3)] backdrop-blur-[6px] rounded-[70px] text-white">
       <Link to="/">
         <img src={logo} alt="Logo" className="cursor-pointer w-[174px]" />
       </Link>
