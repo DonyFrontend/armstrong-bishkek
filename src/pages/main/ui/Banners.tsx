@@ -19,6 +19,7 @@ import {
   useFeedbacksStore,
 } from "@/app/store/feedbacks/feedbacksStore";
 import Feedback from "@/shared/ui/feedback/Feedback";
+import { api } from "@/shared/api/instance";
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -147,7 +148,7 @@ const Banners = () => {
             >
               <div className="relative group w-full h-[424px] rounded-2xl overflow-hidden cursor-pointer">
                 <img
-                  src={`https://wide-clocks-enjoy.loca.lt${item.images[0]}`}
+                  src={`${api}${item.images[0]}`}
                   alt={`catalog-${item.id}`}
                   className="w-full h-full object-cover transition duration-300 group-hover:blur-sm"
                 />
