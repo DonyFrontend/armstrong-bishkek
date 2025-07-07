@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import hand from "@/shared/assets/icons/hand.svg";
 import hand_active from "@/shared/assets/icons/hand_active.svg";
 import location from "@/shared/assets/icons/location.svg";
@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import r_project_1 from "@/shared/assets/images/realized_project_1.png";
 import r_project_2 from "@/shared/assets/images/realized_project_2.png";
 import r_project_3 from "@/shared/assets/images/realized_project_3.png";
+import { useFeedbacksStore } from "@/app/store/feedbacks/feedbacksStore";
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -41,6 +42,14 @@ const Banners = () => {
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const { feedbacks, getFeedbacks } = useFeedbacksStore();
+
+  useEffect(() => {
+    getFeedbacks(setLoading);
+  }, [getFeedbacks]);
+
+  console.log(feedbacks);
 
   return (
     <div className="flex flex-col gap-y-11">
@@ -162,12 +171,8 @@ const Banners = () => {
         </section>
       </div>
       <div className="flex flex-col gap-y-3 items-start">
-        <h3 className="text-[30px] font-bold text-white">
-          Отзывы
-        </h3>
-        <section className="flex gap-x-10">
-          
-        </section>
+        <h3 className="text-[30px] font-bold text-white">Отзывы</h3>
+        <section className="flex gap-x-10">{loading ? <h4>Loading...</h4> : <p>Данные загружены</p>}</section>
       </div>
     </div>
   );

@@ -1,12 +1,9 @@
-type Props = {
-  avatar: string;
-  name: string;
-  text: string;
-  date: string;
-};
+import type { IFeedback } from "@/pages/main/model/types/types";
 
-const Feedback = ({ avatar, date, name, text }: Props) => {
-  return <div></div>;
+const Feedback = ({ created_at, name, review }: IFeedback) => {
+  return <div>
+    
+  </div>;
 };
 
 export default Feedback;

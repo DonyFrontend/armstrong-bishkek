@@ -4,9 +4,9 @@ import MainHeader from "@/widgets/main-header/ui/MainHeader";
 import { useNavigate } from "react-router-dom";
 import Banners from "./Banners";
 
-
 const Main = () => {
   const navigate = useNavigate();
+
 
   return (
     <div className="w-full flex flex-col justify-center">
@@ -51,7 +51,6 @@ const Main = () => {
         <div className="w-main">
           <Banners />
         </div>
-
       </div>
     </div>
   );
