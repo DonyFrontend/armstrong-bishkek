@@ -3,21 +3,35 @@ import MainSwiper from "@/shared/ui/main-swiper/MainSwiper";
 import MainHeader from "@/widgets/main-header/ui/MainHeader";
 import { useNavigate } from "react-router-dom";
 import Banners from "./Banners";
-
+import { useMediaQuery } from "@/shared/hooks/useMedia";
 
 const Main = () => {
   const navigate = useNavigate();
+  const mobile = useMediaQuery("(max-width:1023px)");
 
   return (
     <div className="w-full flex flex-col justify-center">
       <div
         style={{ backgroundImage: `url(${banner})` }}
-        className={`w-full h-[100vh] bg-cover bg-center flex justify-center`}
+        className={`w-full h-[100vh] ${
+          mobile && "h-[190vh]"
+        } bg-cover bg-center flex justify-center`}
       >
-        <div className="w-main flex flex-col  items-center justify-between text-white py-10">
-          <MainHeader />
-          <div className="flex w-full justify-between">
-            <div className="flex flex-col w-1/2  gap-6 text-wrap">
+        <div className="w-main flex flex-col items-center gap-y-16 text-white py-10">
+          <MainHeader mobile={mobile} />
+
+          <div
+            className={`flex ${
+              mobile
+                ? "flex-col gap-y-12 items-center"
+                : "items-start justify-between"
+            } w-full`}
+          >
+            <div
+              className={`flex flex-col ${
+                mobile ? "w-full items-center text-center" : "w-1/2"
+              } gap-6`}
+            >
               <h1 className="text-[50px] font-bold">
                 Официальный дилер Armstrong в Кыргызстане
               </h1>
@@ -29,29 +43,34 @@ const Main = () => {
               <div className="w-full flex gap-4">
                 <button
                   onClick={() => navigate("/contact")}
-                  className="w-1/2 bg-main rounded-[10px] p-2 font-bold text-[30px] cursor-pointer"
+                  className={`w-1/2 bg-main rounded-[10px] p-2 font-bold ${
+                    mobile ? "text-[18px]" : "text-[30px]"
+                  } cursor-pointer`}
                 >
                   Консультация
                 </button>
                 <button
                   onClick={() => navigate("/catalog")}
-                  className="w-1/2 bg-main rounded-[10px] p-2 font-bold text-[30px] cursor-pointer"
+                  className={`w-1/2 bg-main rounded-[10px] ${
+                    mobile ? "text-[18px]" : "text-[30px]"
+                  } font-bold cursor-pointer p-2`}
                 >
                   Узнать подробнее
                 </button>
               </div>
             </div>
+
             <div>
-              <MainSwiper />
+              <MainSwiper mobile={mobile} />
             </div>
           </div>
         </div>
       </div>
+
       <div className="w-full bg-black flex flex-col items-center gap-[15px]">
         <div className="w-main">
           <Banners />
         </div>
-
       </div>
     </div>
   );

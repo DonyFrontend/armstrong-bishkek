@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
+:root {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-main: #febc30;
   --width-main: 85%;
+  --width-catalog: 75%;
 }
 
 /* Цвет обычных точек */
 .custom-pagination .swiper-pagination-bullet {
-  background-color: #fff; /* белые */
+  background-color: #fff;
+  /* белые */
   opacity: 0.5;
 }
 
 /* Цвет активной точки */
 .custom-pagination .swiper-pagination-bullet-active {
-  background-color: #facc15; /* жёлтая (tailwind yellow-400) */
+  background-color: #facc15;
+  /* жёлтая (tailwind yellow-400) */
   opacity: 1;
 }

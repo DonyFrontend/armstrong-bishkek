@@ -7,9 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const MainSwiper = () => {
+const MainSwiper = ({ mobile }: { mobile: boolean }) => {
   return (
-    <div className="relative w-[580px]">
+    <div className={`relative ${mobile ? "w-[350px]" : "w-[580px]"}`}>
       <Swiper
         modules={[Navigation, Pagination]}
         loop={true}
@@ -21,7 +21,9 @@ const MainSwiper = () => {
           el: ".custom-pagination",
           clickable: true,
         }}
-        className="w-[580px] h-[360px] rounded-[12px] overflow-hidden"
+        className={` ${
+          mobile ? "w-[350px] h-[200px]" : "h-[360px]"
+        } rounded-[12px] overflow-hidden`}
       >
         <SwiperSlide>
           <img
@@ -47,10 +49,10 @@ const MainSwiper = () => {
       </Swiper>
 
       {/* Стрелки вне картинки */}
-      <button className="custom-prev absolute -left-8 top-1/2 -translate-y-1/2 text-white text-3xl z-10 hover:text-main">
+      <button className={`custom-prev absolute ${mobile ? "-left-0.5" : "-left-8"} top-1/2 -translate-y-1/2 text-white text-3xl z-10 hover:text-main`}>
         ⟨
       </button>
-      <button className="custom-next absolute -right-8 top-1/2 -translate-y-1/2 text-white text-3xl z-10 hover:text-main">
+      <button className={`custom-next absolute ${mobile ? "-right-1" : "-right-8"} top-1/2 -translate-y-1/2 text-white text-3xl z-10 hover:text-main`}>
         ⟩
       </button>
 
