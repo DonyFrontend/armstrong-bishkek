@@ -11,11 +11,6 @@ const ContactsPanel = () => {
   const [status, setStatus] = useState("");
   const [searchParams] = useSearchParams();
   const productName = searchParams.get("product");
-  console.log(productName);
-
-
-  const [searchParams] = useSearchParams();
-  const productName = searchParams.get("product");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
