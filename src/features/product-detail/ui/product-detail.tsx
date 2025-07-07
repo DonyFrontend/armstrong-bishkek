@@ -20,15 +20,6 @@ const ProductDetail = () => {
     const mobile = useMediaQuery("(max-width:1023px)");
     const navigate = useNavigate();
 
-    const handleBuyClick = () => {
-        if (product?.title) {
-            navigate(`/contact?product=${encodeURIComponent(product.title)}`);
-        } else {
-            navigate("/contact");
-        }
-    };
-
-
     useEffect(() => {
         getCatalogs(setLoading);
     }, [getCatalogs]);
@@ -104,7 +95,13 @@ const ProductDetail = () => {
 
                             <div className="mt-6">
                                 <button
-                                    onClick={handleBuyClick}
+                                    onClick={() => {
+                                        if (product?.title) {
+                                            navigate(`/contact?product=${encodeURIComponent(product.title)}`);
+                                        } else {
+                                            navigate("/contact");
+                                        }
+                                    }}
                                     className="w-full bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 text-black text-2xl font-semibold py-3 rounded-xl"
                                 >
                                     Купить

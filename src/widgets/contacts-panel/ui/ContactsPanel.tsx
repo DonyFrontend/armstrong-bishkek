@@ -14,6 +14,9 @@ const ContactsPanel = () => {
   console.log(productName);
 
 
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get("product");
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await postContact({ setLoading, name, number, comment, setStatus });
