@@ -32,7 +32,7 @@ const MainHeader = ({ mobile }: { mobile: boolean }) => {
             Реализованные проекты
           </a>
           <CustomLink to="/blog">Блог</CustomLink>
-          <CustomLink to="/contacts">Контакты</CustomLink>
+          <CustomLink to="/contact">Контакты</CustomLink>
         </nav>
       )}
 
