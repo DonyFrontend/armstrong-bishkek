@@ -13,7 +13,7 @@ const Main = () => {
     <div className="w-full flex flex-col justify-center">
       <div
         style={{ backgroundImage: `url(${banner})` }}
-        className={`w-full h-[100vh] ${
+        className={`w-full h-[80vh] ${
           mobile && "h-[190vh]"
         } bg-cover bg-center flex justify-center`}
       >
