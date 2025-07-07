@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import hand from "@/shared/assets/icons/hand.svg";
 import hand_active from "@/shared/assets/icons/hand_active.svg";
 import location from "@/shared/assets/icons/location.svg";
@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import r_project_1 from "@/shared/assets/images/realized_project_1.png";
 import r_project_2 from "@/shared/assets/images/realized_project_2.png";
 import r_project_3 from "@/shared/assets/images/realized_project_3.png";
+import { useFeedbacksStore } from "@/app/store/feedbacks/feedbacksStore";
+import Feedback from "@/shared/ui/feedback/Feedback";
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -41,10 +43,18 @@ const Banners = () => {
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const { feedbacks, getFeedbacks } = useFeedbacksStore();
+
+  useEffect(() => {
+    getFeedbacks(setLoading);
+  }, [getFeedbacks]);
+
+  console.log(feedbacks);
 
   return (
     <div className="flex flex-col gap-y-11">
-      <section className="grid grid-cols-4 auto-rows-auto gap-6 py-10 text-white text-[18px] font-bold">
+      <section className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 auto-rows-auto gap-6 py-10 text-white text-[18px] font-bold">
         {banners.map((item, index) => (
           <article
             key={index}
@@ -123,21 +133,33 @@ const Banners = () => {
       <div className="flex justify-start">
         <h3 className="text-[30px] font-bold text-white">Релевантные товары</h3>
       </div>
-      <div className="flex flex-col gap-y-3 items-start">
+      <div id="projects" className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">
           Реализованные проекты
         </h3>
-        <section className="flex gap-x-10">
-          <img className="w-[33%] rounded-[10px]" src={r_project_1} alt="" />
-          <img className="w-[33%] rounded-[10px]" src={r_project_2} alt="" />
-          <img className="w-[33%] rounded-[10px]" src={r_project_3} alt="" />
+        <section className="flex flex-col lg:flex-row gap-x-10">
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_1}
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_2}
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_3}
+            alt=""
+          />
         </section>
       </div>
       <div className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">
           Наши видео на YouTube
         </h3>
-        <section className="flex w-full gap-x-10">
+        <section className="flex flex-col lg:flex-row w-full gap-x-10">
           <iframe
             className="w-[33%]"
             height="240"
@@ -162,11 +184,20 @@ const Banners = () => {
         </section>
       </div>
       <div className="flex flex-col gap-y-3 items-start">
-        <h3 className="text-[30px] font-bold text-white">
-          Отзывы
-        </h3>
-        <section className="flex gap-x-10">
-          
+        <h3 className="text-[30px] font-bold text-white">Отзывы</h3>
+        <section className="flex gap-x-10 py-4">
+          {loading ? (
+            <h4>Loading...</h4>
+          ) : (
+            feedbacks.map((item) => (
+              <Feedback
+                created_at={item.created_at}
+                key={item.id}
+                name={item.name}
+                review={item.review}
+              />
+            ))
+          )}
         </section>
       </div>
     </div>
