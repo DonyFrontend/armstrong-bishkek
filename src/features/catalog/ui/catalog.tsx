@@ -181,7 +181,7 @@ const Catalog = () => {
                                             <p className="text-lg font-semibold">Цена розничная:</p>
                                             <p className="text-lg font-semibold mb-4">{item.price_retail} руб</p>
 
-                                            <button className="bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
+                                            <button className="bg-[#FEBC30] w-[200px] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
                                                 Купить
                                             </button>
                                         </div>
