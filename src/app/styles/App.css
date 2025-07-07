@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-main: #febc30;
   --width-main: 85%;

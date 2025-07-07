@@ -8,6 +8,6 @@ export interface IFeedback {
 }
 
 export interface IFeedbacksSlice {
-  feedbacks: [];
+  feedbacks: IFeedback[];
   getFeedbacks: (loading: Dispatch<SetStateAction<boolean>>) => void;
 }

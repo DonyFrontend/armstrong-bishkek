@@ -53,7 +53,7 @@ const Banners = () => {
 
   return (
     <div className="flex flex-col gap-y-11">
-      <section className="grid grid-cols-4 auto-rows-auto gap-6 py-10 text-white text-[18px] font-bold">
+      <section className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 auto-rows-auto gap-6 py-10 text-white text-[18px] font-bold">
         {banners.map((item, index) => (
           <article
             key={index}
@@ -132,21 +132,21 @@ const Banners = () => {
       <div className="flex justify-start">
         <h3 className="text-[30px] font-bold text-white">Релевантные товары</h3>
       </div>
-      <div className="flex flex-col gap-y-3 items-start">
+      <div id="projects" className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">
           Реализованные проекты
         </h3>
-        <section className="flex gap-x-10">
-          <img className="w-[33%] rounded-[10px]" src={r_project_1} alt="" />
-          <img className="w-[33%] rounded-[10px]" src={r_project_2} alt="" />
-          <img className="w-[33%] rounded-[10px]" src={r_project_3} alt="" />
+        <section className="flex flex-col lg:flex-row gap-x-10">
+          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_1} alt="" />
+          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_2} alt="" />
+          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_3} alt="" />
         </section>
       </div>
       <div className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">
           Наши видео на YouTube
         </h3>
-        <section className="flex w-full gap-x-10">
+        <section className="flex flex-col lg:flex-row w-full gap-x-10">
           <iframe
             className="w-[33%]"
             height="240"
@@ -172,7 +172,9 @@ const Banners = () => {
       </div>
       <div className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">Отзывы</h3>
-        <section className="flex gap-x-10">{loading ? <h4>Loading...</h4> : <p>Данные загружены</p>}</section>
+        <section className="flex gap-x-10">
+          {loading ? <h4>Loading...</h4> : <p>Данные загружены</p>}
+        </section>
       </div>
     </div>
   );
