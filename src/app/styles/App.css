@@ -3,6 +3,7 @@
 @theme {
   --color-main: #febc30;
   --width-main: 85%;
+  --width-catalog: 70%;
 }
 
 /* Цвет обычных точек */
