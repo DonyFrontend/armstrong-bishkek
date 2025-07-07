@@ -4,6 +4,7 @@ import { postContact } from "../model/service/postContact";
 import { useSearchParams } from "react-router-dom";
 
 const ContactsPanel = () => {
+  
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [comment, setComment] = useState("");
