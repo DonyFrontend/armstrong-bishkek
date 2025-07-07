@@ -2,14 +2,13 @@ import MainHeader from "@/widgets/main-header/ui/MainHeader";
 import { useEffect, useState } from "react"
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery"
 import { useCatalogsStore } from "@/app/store/feedbacks/feedbacksStore"
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from "swiper/modules";
 import { api } from "@/shared/api/instance";
-
 
 const ProductDetail = () => {
 
@@ -19,6 +18,16 @@ const ProductDetail = () => {
     const { id } = useParams()
     const product = catalogs.find(item => String(item.id) === id);
     const mobile = useMediaQuery("(max-width:1023px)");
+    const navigate = useNavigate();
+
+    const handleBuyClick = () => {
+        if (product?.title) {
+            navigate(`/contact?product=${encodeURIComponent(product.title)}`);
+        } else {
+            navigate("/contact");
+        }
+    };
+
 
     useEffect(() => {
         getCatalogs(setLoading);
@@ -94,9 +103,13 @@ const ProductDetail = () => {
                             </div>
 
                             <div className="mt-6">
-                                <button className="w-full bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 text-black text-2xl font-semibold py-3 rounded-xl">
+                                <button
+                                    onClick={handleBuyClick}
+                                    className="w-full bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 text-black text-2xl font-semibold py-3 rounded-xl"
+                                >
                                     Купить
                                 </button>
+
                             </div>
 
                             {/* Цвета и валюта */}
@@ -143,7 +156,7 @@ const ProductDetail = () => {
                                                 <p className="text-lg font-semibold">Цена розничная:</p>
                                                 <p className="text-lg font-semibold mb-4">{item.price_retail} руб</p>
 
-                                                <button className="bg-[#FEBC30] cursor-pointer hover:bg-yellow-400 transition text-black text-sm px-7 py-3">
+                                                <button className="bg-[#FEBC30] cursor-pointer transition text-black text-sm px-7 py-3">
                                                     Купить
                                                 </button>
                                             </div>

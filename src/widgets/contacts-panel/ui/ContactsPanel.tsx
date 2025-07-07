@@ -1,6 +1,7 @@
 import background from "@/shared/assets/images/contacts_background.png";
 import { useState } from "react";
 import { postContact } from "../model/service/postContact";
+import { useSearchParams } from "react-router-dom";
 
 const ContactsPanel = () => {
   const [name, setName] = useState("");
@@ -8,6 +9,10 @@ const ContactsPanel = () => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get("product");
+  console.log(productName);
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,22 +60,22 @@ const ContactsPanel = () => {
         </div>
         <div className="w-full flex flex-col gap-y-1">
           <textarea
-            value={comment}
+            value={productName ? `Хочу подробнее узнать о "${productName}"` : comment}
             name=""
             id=""
             placeholder="Введите комментарий"
             maxLength={1000}
             className="max-h-[300px] min-h-[200px] bg-white w-full rounded-[10px] text-black p-3 placeholder:text-gray-500"
             onChange={(e) => setComment(e.target.value)}
-          ></textarea>
+          >
+          </textarea>
           <span>{comment.length}/1000</span>
         </div>
         <button
           type="submit"
           disabled={loading == true}
-          className={`p-2 rounded-[10px] cursor-pointer flex justify-center items-center px-4 text-[20px] text-white ${
-            loading ? "bg-yellow-700" : "bg-main"
-          }`}
+          className={`p-2 rounded-[10px] cursor-pointer flex justify-center items-center px-4 text-[20px] text-white ${loading ? "bg-yellow-700" : "bg-main"
+            }`}
         >
           {loading && (
             <div className="w-[20px] rounded-full bg-none h-[20px] justify-self-center animate-spin border-t botder-b border-t-white border-b-white"></div>
