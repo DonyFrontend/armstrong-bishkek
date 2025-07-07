@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 
 export interface IFeedback {
-  id: number;
+  id?: number;
   name: string;
   review: string;
   created_at: string;

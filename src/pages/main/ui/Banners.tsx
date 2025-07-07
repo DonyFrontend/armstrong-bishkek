@@ -15,6 +15,7 @@ import r_project_1 from "@/shared/assets/images/realized_project_1.png";
 import r_project_2 from "@/shared/assets/images/realized_project_2.png";
 import r_project_3 from "@/shared/assets/images/realized_project_3.png";
 import { useFeedbacksStore } from "@/app/store/feedbacks/feedbacksStore";
+import Feedback from "@/shared/ui/feedback/Feedback";
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -137,9 +138,21 @@ const Banners = () => {
           Реализованные проекты
         </h3>
         <section className="flex flex-col lg:flex-row gap-x-10">
-          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_1} alt="" />
-          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_2} alt="" />
-          <img className="w-full lg:w-[33%] rounded-[10px]" src={r_project_3} alt="" />
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_1}
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_2}
+            alt=""
+          />
+          <img
+            className="w-full lg:w-[33%] rounded-[10px]"
+            src={r_project_3}
+            alt=""
+          />
         </section>
       </div>
       <div className="flex flex-col gap-y-3 items-start">
@@ -172,8 +185,19 @@ const Banners = () => {
       </div>
       <div className="flex flex-col gap-y-3 items-start">
         <h3 className="text-[30px] font-bold text-white">Отзывы</h3>
-        <section className="flex gap-x-10">
-          {loading ? <h4>Loading...</h4> : <p>Данные загружены</p>}
+        <section className="flex gap-x-10 py-4">
+          {loading ? (
+            <h4>Loading...</h4>
+          ) : (
+            feedbacks.map((item) => (
+              <Feedback
+                created_at={item.created_at}
+                key={item.id}
+                name={item.name}
+                review={item.review}
+              />
+            ))
+          )}
         </section>
       </div>
     </div>
