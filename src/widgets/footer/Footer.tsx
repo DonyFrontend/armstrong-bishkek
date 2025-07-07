@@ -66,7 +66,7 @@ const Footer = () => {
             width="750"
             height="350"
             loading="lazy"
-            style={{borderRadius: "10pxи"}}
+            style={{ borderRadius: "10pxи" }}
           ></iframe>
         </div>
       </div>

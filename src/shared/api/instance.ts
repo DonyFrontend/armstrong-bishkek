@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "https://gentle-wasps-leave.loca.lt"
+  baseURL: "https://wide-clocks-enjoy.loca.lt/"
 })
